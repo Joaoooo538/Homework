@@ -83,7 +83,7 @@ predictors_df = df.drop(coluna_resposta, axis=1)
 
 response_series = df[coluna_resposta]
 
-print("\n--- CÁLCULOS DO ITEM 2 (Análise Incondicional) ---")
+print("\n--- CÁLCULOS DA ANÁLISE INCONDICIONAL ---")
 
 print("Calculando Média, Desvio Padrão e Assimetria para todos os N=1599 vinhos.")
 
@@ -101,8 +101,10 @@ print(tabela_item2[colunas_pedidas])
 
 print("\n--- GERANDO GRÁFICOS DO ITEM 2 (Análise Incondicional) ---")
 
-output_dir = "graficos"
+output_dir = "graficos_incondicional"
+
 if not os.path.exists(output_dir):
+
     os.makedirs(output_dir)
 
 print(f"Salvando {len(predictors_df.columns) * 2} gráficos em '{output_dir}'...")
@@ -121,7 +123,7 @@ for column in predictors_df.columns:
     
     plt.savefig(os.path.join(output_dir, f'{column}_histograma.png'))
 
-    plt.close() # Fecha a figura para economizar memória
+    plt.close()
 
     plt.figure(figsize=(10, 6))
 
